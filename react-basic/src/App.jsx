@@ -1,12 +1,13 @@
-import ProductList from "./components/ProductList";
-import UserList from "./components/UserList";
+import UpdateUser from "./components/UpdateUser";
+import { UserProvider } from "./components/UserContext";
+import UserProfile from "./components/UserProfile";
 
 function App(){
   return (
-    <div>
-      <UserList/>
-      <ProductList/>
-    </div>
+    <UserProvider>
+      <UserProfile />
+      <UpdateUser/>
+    </UserProvider>
   )
 }
 
