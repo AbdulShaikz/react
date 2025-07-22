@@ -1,13 +1,12 @@
-import UpdateUser from "./components/UpdateUser";
-import { UserProvider } from "./components/UserContext";
-import UserProfile from "./components/UserProfile";
+import FocusInput from "./components/FocusInput";
+import Timer from "./components/Timer";
 
 function App(){
   return (
-    <UserProvider>
-      <UserProfile />
-      <UpdateUser/>
-    </UserProvider>
+    <div>
+      <FocusInput/>
+      <Timer/>
+    </div>
   )
 }
 
