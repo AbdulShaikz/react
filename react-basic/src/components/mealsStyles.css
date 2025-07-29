@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: black;
+}
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.meals-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+.meal-item h3 {
+    margin: 0;
+}
+.meal-item p {
+    margin: 0;
+    font-size: 14px;
+}
+.meals-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
