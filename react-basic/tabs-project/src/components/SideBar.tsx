@@ -1,27 +1,37 @@
-import { FaHome, FaUser, FaCog, FaSignOutAlt } from "react-icons/fa"
+import { FaHome, FaSearch, FaUser } from "react-icons/fa"
+import { IoMdSettings } from "react-icons/io"
 
 const SideBar = () => {
-    return (
-        <aside className="w-16 md:w-[5%] bg-gray-900 min-h-screen p-1 md:p-2 flex flex-col justify-between">
-            <section className="top flex flex-col gap-2 md:gap-4 items-center p-1 md:p-2">
-                <div className="hover:bg-gray-800 p-1 md:p-2 rounded-lg cursor-pointer">
-                    <FaHome color="white" size={24} className="md:w-[29px] md:h-[29px]"/>
-                </div>
-                <div className="hover:bg-gray-800 p-1 md:p-2 rounded-lg cursor-pointer">
-                    <FaUser color="white" size={24} className="md:w-[29px] md:h-[29px]"/>
-                </div>
-            </section>
-            
-            <section className="bottom flex flex-col gap-2 md:gap-4 items-center p-1 md:p-2">
-                <div className="hover:bg-gray-800 p-1 md:p-2 rounded-lg cursor-pointer">
-                    <FaCog color="white" size={24} className="md:w-[29px] md:h-[29px]"/>
-                </div>
-                <div className="hover:bg-gray-800 p-1 md:p-2 rounded-lg cursor-pointer">
-                    <FaSignOutAlt color="white" size={24} className="md:w-[29px] md:h-[29px]"/>
-                </div>
-            </section>
-        </aside>
-    )
+  return (
+    <aside className="sidebar fixed top-0 left-0 h-screen w-20 bg-[#1A1C1E] text-white hidden md:block">
+        <ul className="p-4 flex flex-col justify-between items-center h-full">
+            <div className="top">
+                <li className="mb-2">
+                    <div className="flex items-center">
+                        <FaHome className="mb-2" size={29}/>
+                    </div>
+                </li>
+                <li className="mb-2">
+                    <div className="flex items-center">
+                        <FaSearch className="mb-2" size={29}/>
+                    </div>
+                </li>
+                <li className="mb-2">
+                    <div className="flex items-center">
+                        <FaUser className="mb-2" size={29}/>
+                    </div>
+                </li>
+            </div>
+            <div className="bottom">
+                <li className="mb-2">
+                    <div className="flex items-center">
+                        <IoMdSettings className="mb-2" size={29}/>
+                    </div>
+                </li>
+            </div>
+        </ul>       
+    </aside>
+  )
 }
 
 export default SideBar
