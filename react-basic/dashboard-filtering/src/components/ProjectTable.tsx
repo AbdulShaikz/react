@@ -46,7 +46,7 @@ const ProjectTable = () => {
               <td className="px-4 py-2">{project.project}</td>
               <td className="px-4 py-2">
                 <div className="w-24 h-2 bg-gray-700 rounded">
-                  <div className={`w-[${project.progress}] h-2 bg-green-500 rounded`}>
+                  <div style={{ width: project.progress }} className='h-2 bg-green-500 rounded'>
                   </div>
                 </div>
               </td>
