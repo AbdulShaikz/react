@@ -1,48 +1,60 @@
-import { useState } from 'react';
-import './App.css'
+import { useEffect, useState } from 'react';
+import './App.css';
 
-interface CryptoCurrency {
-  id: string,
-  symbol: string,
-  name: string
+type Products = {
+  id: number,
+  title: string,
+  description: string,
+  price: string,
+  rating: string,
+  thumbnail: string
 }
-
-const dummyData: CryptoCurrency[] = [
-  {id: '1', symbol: 'BTC', name: 'BitCoin'},
-  {id: '2', symbol: 'ETH', name: 'Ethereum'}
-];
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-    setIsOpen(e.target.value.length>0);
+  const [products, setProducts] = useState<Products[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  async function fetchData(){
+    try {
+      const response = await fetch('https://dummyjson.com/products/?limit=10');
+      if(!response.ok){
+        throw new Error("Error while getting data");
+      }
+
+      const data = await response.json();
+      setProducts(data.products || []);
+
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else if (typeof error === 'string') {
+        setError(error);
+      } else {
+        setError('unknown');
+      }
+    }
   }
+
+  useEffect(()=>{
+    fetchData();
+  },[]);
+
   return (
-    <div className='container'>
-      <input 
-        type="text"
-        value={inputValue}
-        onChange={handleChange}
-        className='inputContainer' 
-      />
-      {isOpen && (
-        <ul>
-          {dummyData
-            .filter(ticker => ticker.name.toLowerCase().includes(inputValue.toLowerCase()))
-            .map(ticker => (
-              <li
-                key={ticker.id}
-              >
-                {ticker.name} ({ticker.symbol})
-              </li>
-            ))}
-        </ul>
+    <main className="container">
+      {products.length > 0 && (
+        <section className='card-container'>
+          {products.map((product) => (
+            <article key={product.id} className='card'>
+              <img src={product.thumbnail} className='card-image' alt={product.title} />
+              <h3>{product.title}</h3>
+              <h3>$ {product.price}</h3>
+            </article>
+          ))}
+        </section>
       )}
-    </div>
-  )
+    </main>
+  );
+
 }
 
-export default App
+export default App;
